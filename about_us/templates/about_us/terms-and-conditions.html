@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Terms and Conditions{% endblock %}
+{% block title %}Terms and Conditions {{ block.super }} {% endblock %}
 
 
 {% block content %}
@@ -24,8 +24,8 @@
                 </div>
             {% endif %}
         </div>
-        <br>
     </div>
+
 
 {% endblock content %}
 

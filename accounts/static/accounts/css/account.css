@@ -17,17 +17,29 @@ a:hover {
     text-decoration: none;
 }
 
-
-.nav-item{
-   margin: 0;
+.nav-item {
+    margin: 0;
     padding: 0;
 }
 
-.nav-link{
+.nav-link {
     color: white !important;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     color: #c82333 !important;
 }
 
+.wild {
+    color: red !important;
+    font-weight: bold !important;
+    font-style: italic !important;
+    font-size: 30px;
+}
+
+.orange {
+    color: #85C226 !important;
+    font-weight: bold !important;
+    font-style: italic !important;
+    font-size: 30px;
+}
