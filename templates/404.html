@@ -1,0 +1,27 @@
+{% extends "accounts/base_account.html" %}
+{% load static %}
+{% block title %}404 {{ block.super }}{% endblock %}
+
+{% block content %}
+
+    <section id="main-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="errorPag">
+                        <h3 class="text-center" style="font-size: 180px"><span
+                                style="color: #0c5460">4</span><span>0</span><span style="color: #0c5460">4</span></h3>
+                        <h4 class="text-center mb-3">
+                            <i class="fa fa-warning text-warning"></i>
+                            Oops! Page Not Found.
+                        </h4>
+                        <div class="text-center mb-5">
+                            <a href="{% url 'home' %}" class="btn btn-outline-primary">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

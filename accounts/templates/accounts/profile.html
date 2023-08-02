@@ -1,0 +1,111 @@
+{% extends 'accounts/base_account.html' %}
+{% block title %} Profile {{ block.super }} {% endblock title %}
+{% block content %}
+
+
+    <section class="main-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-8 col-md-5 col-lg-5 col-xl-5">
+                    <!-- Message -->
+                    <div class="text-center">
+                        {% if messages %}
+                            <div class="alert alert-success messages alert-dismissable">
+                                {% for message in messages %}
+                                    <button type="button"{% if message.tags %}
+                                            class="{{ message.tags }} close"{% endif %}
+                                            data-dismiss="alert" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                                    {{ message }}<br/>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <h3 class="text-center my-3 font-weight-bold">
+                        <a href="{% url 'home' %}">
+                            Wild Orange Restaurant
+                        </a>
+                    </h3>
+                    <div class="card">
+                        <h5 class="text-center">
+                            {% if user.profile_picture %}
+                                <img src="{{ user.profile_picture.url }}" height="130" width="130"
+                                     class="rounded-circle mt-3">
+                            {% endif %}
+                        </h5>
+                        <div class="card-body">
+                            <!-- Signup form --->
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <!-- First Name-->
+                                    <div class="col-6 form-group">
+                                        <input type="text" class="form-control" placeholder="First name"
+                                               name="first_name" value="{{ user.first_name }}">
+                                        {{ user.first_name.errors }}
+                                    </div>
+                                    <!-- Last Name -->
+                                    <div class="col-6 form-group">
+                                        <input type="text" class="form-control" placeholder="Last name"
+                                               name="last_name" value="{{ user.last_name }}">
+                                        {{ form.last_name.errors }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- First Name-->
+                                    <div class="col-6 form-group">
+                                        <input type="text" class="form-control" placeholder="E-mail Address"
+                                               name="email" value="{{ user.email }}">
+                                        {{ form.email.errors }}
+                                    </div>
+                                    <!-- Last Name -->
+                                    <div class="col-6 form-group">
+                                        <input type="text" class="form-control" placeholder="contact number"
+                                               name="contact_number" value="{{ user.contact_number }}">
+                                        {{ form.contact_number.errors }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- Gender -->
+                                    <div class="form-group col-md-6">
+                                        <select class="form-control" name="gender">
+                                            <option value={{ user.gender }} selected>Male</option>
+                                            <option value="F">Female</option>
+                                            <option value="O">Other</option>
+                                        </select>
+                                        {{ form.gender.errors }}
+                                    </div>
+                                    <!-- Date of Birth: -->
+                                    <div class="form-group col-md-6">
+                                        <input type="date" class="form-control" name="date_of_birth"
+                                               value="{{ user.date_of_birth|date:'Y-m-d' }}">
+                                        {{ form.date_of_birth.errors }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        {% if user.profile_picture %}
+                                            <a class="mb-3" href="{{ user.profile_picture.url }}" target="_blank">
+                                                {{ user.profile_picture.url }}
+                                            </a>
+                                        {% endif %}
+                                        <input type="file" name="profile_picture" accept="image/*">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Sign up Section -->
+
+    <div class="bottom_margin"></div>
+
+{% endblock content %}

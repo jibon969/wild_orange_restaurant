@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    -webkit-transition: color .3s, background-color .3s;
+    -moz-transition: color .3s, background-color .3s;
+    -o-transition: color .3s, background-color .3s;
+    transition: color .3s, background-color .3s
+}
+
+a:focus,
+a:hover {
+    outline: 0;
+    text-decoration: none;
+}
+
+
+.nav-item{
+   margin: 0;
+    padding: 0;
+}
+
+.nav-link{
+    color: white !important;
+}
+
+.nav-link:hover{
+    color: #c82333 !important;
+}
+
