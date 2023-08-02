@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Privacy Policy{% endblock %}
+
+{% block content %}
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <h3 class="text-center font-weight-bold">Privacy Policy</h3>
+            <hr>
+            {% if privacy %}
+                <div class="row g-5 align-items-center">
+                    <div class="col col-12 mb-4">
+                        <p>{{ privacy.description }}</p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row g-5 align-items-center">
+                    <div class="col col-12 mb-4">
+                        <hr>
+                        <h5 class="text-center">No Privacy Policy Data Available!</h5>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <br>
+    </div>
+
+
+{% endblock content %}
