@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3rd party library
-    'crispy_forms',  # Form design using bootstrap
+    # 'crispy_forms',  # Form design using bootstrap
+    'embed_video',  # For youtube Videos
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -64,6 +65,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Footer Context
+                'about_us.footer_context_processor.footer_renderer',
             ],
         },
     },

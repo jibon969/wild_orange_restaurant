@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models.signals import pre_save
+from .utils import unique_slug_generator
+from embed_video.fields import EmbedVideoField
 
 
 class AboutImage(models.Model):
@@ -26,7 +29,7 @@ class About(models.Model):
 
 class Services(models.Model):
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=250)
+    description = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
 
@@ -36,6 +39,7 @@ class Services(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=120)
+    slug = models.SlugField(null=True, blank=True, max_length=50)
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
 
@@ -43,14 +47,45 @@ class Category(models.Model):
         return self.title
 
 
-class Items(models.Model):
+def category_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+
+pre_save.connect(category_pre_save_receiver, sender=Category)
+
+
+class Item(models.Model):
     title = models.CharField(max_length=120)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="category")
     image = models.FileField(upload_to="items/")
     description = models.TextField()
     price = models.PositiveIntegerField()
+    slug = models.SlugField(null=True, blank=True, max_length=50)
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+def items_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+
+pre_save.connect(items_pre_save_receiver, sender=Item)
+
+
+# Youtube Video link ( 3:02 Pm at 16/04/2020 )
+class YoutubeVideo(models.Model):
+    title = models.CharField(max_length=120)
+    video = EmbedVideoField()  # same like models.URLField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-timestamp']
 
     def __str__(self):
         return self.title

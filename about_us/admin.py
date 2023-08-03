@@ -6,6 +6,7 @@ from .models import (
     Help,
     PolicyPolicy,
     TermsConditions,
+    Newsletter
 )
 
 
@@ -81,3 +82,15 @@ class TermsConditionsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(TermsConditions, TermsConditionsAdmin)
+
+
+class NewsletterAdmin(admin.ModelAdmin):
+    list_display = ['email', 'timestamp']
+    search_fields = ['email']
+    list_per_page = 20
+
+    class Meta:
+        model = Newsletter
+
+
+admin.site.register(Newsletter, NewsletterAdmin)

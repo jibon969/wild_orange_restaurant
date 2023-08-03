@@ -4,10 +4,11 @@ from .models import (
     About,
     Services,
     Category,
-    Items,
+    Item,
+    YoutubeVideo,
     OnlineTableBook,
     OurClient,
-    Contact
+    Contact,
 )
 
 
@@ -59,16 +60,28 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 
-class ItemsAdmin(admin.ModelAdmin):
+class ItemAdmin(admin.ModelAdmin):
     list_display = ['title', 'timestamp']
     search_fields = ['title']
     list_per_page = 20
 
     class Meta:
-        model = Items
+        model = Item
 
 
-admin.site.register(Items, ItemsAdmin)
+admin.site.register(Item, ItemAdmin)
+
+
+class YoutubeVideoAdmin(admin.ModelAdmin):
+    list_display = ['title', 'timestamp']
+    search_fields = ['title']
+    list_per_page = 20
+
+    class Meta:
+        model = YoutubeVideo
+
+
+admin.site.register(YoutubeVideo, YoutubeVideoAdmin)
 
 
 class OnlineTableBookAdmin(admin.ModelAdmin):
