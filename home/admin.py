@@ -1,0 +1,120 @@
+from django.contrib import admin
+from .models import (
+    AboutImage,
+    About,
+    Services,
+    Category,
+    Item,
+    YoutubeVideo,
+    OnlineTableBook,
+    OurClient,
+    Contact,
+)
+
+
+class AboutImageAdmin(admin.ModelAdmin):
+    list_display = ['title', 'timestamp']
+    search_fields = ['title']
+    list_per_page = 20
+
+    class Meta:
+        model = AboutImage
+
+
+admin.site.register(AboutImage, AboutImageAdmin)
+
+
+class AboutAdmin(admin.ModelAdmin):
+    list_display = ['title', 'timestamp']
+    search_fields = ['title']
+    list_per_page = 20
+
+    class Meta:
+        model = About
+
+
+admin.site.register(About, AboutAdmin)
+
+
+class ServicesAdmin(admin.ModelAdmin):
+    list_display = ['title', 'timestamp']
+    search_fields = ['title']
+    list_per_page = 20
+
+    class Meta:
+        model = Services
+
+
+admin.site.register(Services, ServicesAdmin)
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['title', 'timestamp']
+    search_fields = ['title']
+    list_per_page = 20
+
+    class Meta:
+        model = Category
+
+
+admin.site.register(Category, CategoryAdmin)
+
+
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ['title', 'timestamp']
+    search_fields = ['title']
+    list_per_page = 20
+
+    class Meta:
+        model = Item
+
+
+admin.site.register(Item, ItemAdmin)
+
+
+class YoutubeVideoAdmin(admin.ModelAdmin):
+    list_display = ['title', 'timestamp']
+    search_fields = ['title']
+    list_per_page = 20
+
+    class Meta:
+        model = YoutubeVideo
+
+
+admin.site.register(YoutubeVideo, YoutubeVideoAdmin)
+
+
+class OnlineTableBookAdmin(admin.ModelAdmin):
+    list_display = ['name', 'number_of_people', 'timestamp']
+    search_fields = ['name']
+    list_per_page = 20
+
+    class Meta:
+        model = OnlineTableBook
+
+
+admin.site.register(OnlineTableBook, OnlineTableBookAdmin)
+
+
+class OurClientAdmin(admin.ModelAdmin):
+    list_display = ['name', 'timestamp']
+    search_fields = ['name']
+    list_per_page = 20
+
+    class Meta:
+        model = OurClient
+
+
+admin.site.register(OurClient, OurClientAdmin)
+
+
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['name', 'timestamp']
+    search_fields = ['name']
+    list_per_page = 20
+
+    class Meta:
+        model = Contact
+
+
+admin.site.register(Contact, ContactAdmin)

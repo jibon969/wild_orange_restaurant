@@ -1,0 +1,25 @@
+{% extends "accounts/base_account.html" %}
+{% block title %}403 Permission Denied {{ block.super }} {% endblock %}
+
+{% block content %}
+
+    <div id="main-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <h1 class="text-center" style="font-size: 180px">
+                        <span style="color: #0c5460">4</span><span>0</span><span style="color: #0c5460">3</span>
+                    </h1>
+                    <h2 class="text-center">
+                        <i class="fa fa-warning text-warning"></i>
+                        Oops Permission Denied
+                    </h2>
+                    <div class="text-center my-4">
+                        <a href="{% url 'home' %}" class="btn btn-outline-primary">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

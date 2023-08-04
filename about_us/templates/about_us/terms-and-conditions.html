@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Terms and Conditions {{ block.super }} {% endblock %}
+
+
+{% block content %}
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <h3 class="text-center font-weight-bold">Terms & Conditions</h3>
+            <hr>
+            {% if term_condition %}
+                <div class="row">
+                    <div class="col col-12 mb-4">
+                        <p>{{ term_condition.description|safe }}</p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col col-12 mb-4">
+                        <hr>
+                        <h5 class="text-center">No Terms & Conditions Data Available!</h5>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endblock content %}
+

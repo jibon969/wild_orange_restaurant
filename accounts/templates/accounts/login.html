@@ -1,0 +1,68 @@
+{% extends 'accounts/base_account.html' %}
+{% block title %} Login in {{ block.super }} {% endblock title %}
+{% block content %}
+
+
+    <!----- Sign in page ----->
+    <section class="main-section">
+        <div class="container">
+            <h3 class="text-center my-2 font-weight-bold">
+                <a href="{% url 'home' %}">
+                    <span class="wild mx-1">Wild</span> <span class="orange">Orange</span>
+                </a>
+            </h3>
+            <div class="row justify-content-center">
+                <div class="col col-sm-8 col-md-9 col-lg-4 col-xl-4">
+                    <!-- Message -->
+                    <div class="text-center">
+                        {% if messages %}
+                            <div class="alert alert-success messages alert-dismissable">
+                                {% for message in messages %}
+                                    <button type="button"{% if message.tags %}
+                                            class="{{ message.tags }} close"{% endif %}
+                                            data-dismiss="alert" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                                    {{ message }}<br/>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="card">
+                        <article class="card-body">
+                            <a href="{% url 'registration' %}" class="float-right btn btn-outline-primary">
+                                Sign up
+                            </a>
+                            <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label>Your email</label>
+                                    <input name="email" class="form-control" placeholder="Email" type="email">
+                                </div>
+                                <div class="form-group">
+                                    <a class="float-right" href="{% url 'password_reset' %}">Forgot?</a>
+                                    <label>Your password</label>
+                                    <input name="password" class="form-control" placeholder="******" type="password">
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Save password
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block"> Login</button>
+                                </div>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End Login Section --->
+
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends 'accounts/base_account.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% block title %} Activation Error {{ block.super }}  {% endblock title %}
+
+{% block content %}
+
+    <div class="main-section">
+        <div class="container">
+            <h3 class="text-center font-weight-bold my-3">
+                <a href="{% url 'home' %}">
+                    <span class="wild mx-1">Wild</span> <span class="orange">Orange</span>
+                </a>
+            </h3>
+            <div class='row justify-content-center'>
+                <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5 mx-auto">
+                    <div class="card">
+                        {% if key %}
+                            <h5 class="mt-3 text-center">Activation Error. Please try again.</h5>
+                        {% else %}
+                            <h5 class="mt-3 text-center">Re-activate your Email Below.</h5>
+                        {% endif %}
+                        <div class="card-body">
+                            <form method='POST'>
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <button type="submit" class="btn btn-primary btn-block">Resend Activation</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
